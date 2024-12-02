@@ -36,5 +36,34 @@ public class Day01Puzzle
         }
     }
 
+    public class LinqSortSolveStrategy : ISolveStrategy
+    {
+        public int Solve(string dataFilePath)
+        {
+            var lines = File.ReadAllLines(dataFilePath);
+            var leftList = new List<int>();
+            var rightList = new List<int>();
+
+            foreach (var line in lines)
+            {
+                var parts = line.Split("   ").Select(int.Parse).ToArray();
+                leftList.Add(parts[0]);
+                rightList.Add(parts[1]);
+            }
+
+            leftList.Sort();
+            rightList.Sort();
+
+            var totalDistance = 0;
+
+            for (var i = 0; i < leftList.Count; i++)
+            {
+                totalDistance += Math.Abs(leftList[i] - rightList[i]);
+            }
+
+            return totalDistance;
+        }
+    }
+
     public static int Solve(ISolveStrategy solveStrategy, string dataFilePath) => solveStrategy.Solve(dataFilePath);
 }
