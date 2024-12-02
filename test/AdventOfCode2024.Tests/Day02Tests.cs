@@ -2,7 +2,7 @@ using AdventOfCode2024.Lib;
 using FluentAssertions;
 
 namespace AdventOfCode2024.Tests;
-public class DayTwoTests
+public class Day02Tests
 {
     private readonly string _dataFilePath = Utility.GetFullDataFilePath(2);
     
