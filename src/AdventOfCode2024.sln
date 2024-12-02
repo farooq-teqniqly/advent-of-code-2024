@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{C66BA61E-114B-42E7-8163-D813374B162C}"
 	ProjectSection(SolutionItems) = preProject
 		..\data\Day01.txt = ..\data\Day01.txt
+		Day02.txt = Day02.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8D9DAF8E-8AB4-42EB-B48B-6098F02A1FA1}"
