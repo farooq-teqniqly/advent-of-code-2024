@@ -54,14 +54,7 @@ public class Day01Puzzle
             leftList.Sort();
             rightList.Sort();
 
-            var totalDistance = 0;
-
-            for (var i = 0; i < leftList.Count; i++)
-            {
-                totalDistance += Math.Abs(leftList[i] - rightList[i]);
-            }
-
-            return totalDistance;
+            return leftList.Select((left, index) => Math.Abs(left - rightList[index])).Sum();
         }
     }
 
