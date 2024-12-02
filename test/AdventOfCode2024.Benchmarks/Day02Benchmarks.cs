@@ -10,4 +10,8 @@ public class Day02Benchmarks
 
     [Benchmark]
     public int PartOne() => Day02Puzzle.GetSafeReportsCountPartOne(_dataFilePath);
+
+
+    [Benchmark]
+    public int PartTwo() => Day02Puzzle.GetSafeReportsCountPartTwo(_dataFilePath);
 }
