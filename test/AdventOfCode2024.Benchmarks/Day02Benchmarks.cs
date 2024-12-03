@@ -9,16 +9,9 @@ public class Day02Benchmarks
     private readonly string _dataFilePath = Utility.GetFullDataFilePath(2);
 
     [Benchmark]
-    public int PartOne() => Day02Puzzle.GetSafeReportsCountPartOne(_dataFilePath);
+    public int PartOneWithLinq() => new Day02Puzzle.PartOneLinqSolveStrategy().Solve(_dataFilePath);
 
 
     [Benchmark]
-    public int PartTwo() => Day02Puzzle.GetSafeReportsCountPartTwo(_dataFilePath);
-
-    [Benchmark]
-    public int PartOneNoZip() => Day02Puzzle.GetSafeReportsCountPartOne(_dataFilePath, false);
-
-
-    [Benchmark]
-    public int PartTwoNoZip() => Day02Puzzle.GetSafeReportsCountPartTwo(_dataFilePath, false);
+    public int PartTwoWithLinq() => new Day02Puzzle.PartTwoLinqSolveStrategy().Solve(_dataFilePath);
 }
