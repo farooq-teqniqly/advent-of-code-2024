@@ -1,10 +1,13 @@
 using System.Text.RegularExpressions;
 
 namespace AdventOfCode2024.Lib;
-public class Day03Puzzle
+public partial class Day03Puzzle
 {
-    public class PartOneRegexStrategy : ISolveStrategy
+    public partial class PartOneRegexStrategy : ISolveStrategy
     {
+        [GeneratedRegex(@"mul\((\d{1,3}),(\d{1,3})\)", RegexOptions.Compiled | RegexOptions.Singleline)]
+        private static partial Regex CreateRegex();
+
         public int Solve(string dataFilePath)
         {
             var lines = File.ReadLines(dataFilePath);
@@ -13,7 +16,7 @@ public class Day03Puzzle
 
         private static int SumOfValidMultiplications(IEnumerable<string> lines)
         {
-            var regex = new Regex(@"mul\((\d{1,3}),(\d{1,3})\)", RegexOptions.Compiled | RegexOptions.Singleline);
+            var regex = CreateRegex();
 
             var sum = 0;
 
