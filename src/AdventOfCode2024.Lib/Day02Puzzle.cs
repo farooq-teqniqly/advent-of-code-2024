@@ -1,5 +1,3 @@
-using System.Collections.Immutable;
-
 namespace AdventOfCode2024.Lib;
 public class Day02Puzzle
 {
