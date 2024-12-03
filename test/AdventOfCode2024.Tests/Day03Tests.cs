@@ -10,6 +10,13 @@ public class Day03Tests
     public void Can_Get_Sum_With_Regex_Part_One()
     {
         var sum = new Day03Puzzle.PartOneRegexStrategy().Solve(_dataFilePath);
-        sum.Should().Be(166630675);
+        sum.Should().Be(166_630_675);
+    }
+
+    [Fact]
+    public void Can_Get_Sum_With_Regex_Part_Two()
+    {
+        var sum = new Day03Puzzle.PartTwoRegexStrategy().Solve(_dataFilePath);
+        sum.Should().Be(93_465_710);
     }
 }
