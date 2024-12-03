@@ -3,20 +3,20 @@ using System.Collections.Immutable;
 namespace AdventOfCode2024.Lib;
 public class Day02Puzzle
 {
-    public static int GetSafeReportsCountPartOne(string dataFilePath)
+    public static int GetSafeReportsCountPartOne(string dataFilePath, bool useZip = true)
     {
         var lines = File.ReadLines(dataFilePath);
-        return GetSafeReportsCountPartOne(lines);
+        return GetSafeReportsCountPartOne(lines, useZip);
     }
 
-    public static int GetSafeReportsCountPartTwo(string dataFilePath)
+    public static int GetSafeReportsCountPartTwo(string dataFilePath, bool useZip = true)
     {
         var lines = File.ReadLines(dataFilePath);
-        return GetSafeReportsCountPartTwo(lines);
+        return GetSafeReportsCountPartTwo(lines, useZip);
     }
 
 
-    private static int GetSafeReportsCountPartOne(IEnumerable<string> lines)
+    private static int GetSafeReportsCountPartOne(IEnumerable<string> lines, bool useZip = true)
     {
         var safeReportCount = 0;
 
@@ -24,16 +24,26 @@ public class Day02Puzzle
         {
             var levels = line.Split(" ").Select(int.Parse).ToArray();
 
-            if (IsSafe(levels))
+            if (useZip)
             {
-                safeReportCount++;
+                if (IsSafe(levels))
+                {
+                    safeReportCount++;
+                }
+            }
+            else
+            {
+                if (IsSafeNoZip(levels))
+                {
+                    safeReportCount++;
+                }
             }
         }
 
         return safeReportCount;
     }
 
-    private static int GetSafeReportsCountPartTwo(IEnumerable<string> lines)
+    private static int GetSafeReportsCountPartTwo(IEnumerable<string> lines, bool useZip = true)
     {
         var safeReportCount = 0;
 
@@ -41,10 +51,21 @@ public class Day02Puzzle
         {
             var levels = line.Split(" ").Select(int.Parse).ToArray();
 
-            if (IsSafe(levels))
+            if (useZip)
             {
-                safeReportCount++;
-                continue;
+                if (IsSafe(levels))
+                {
+                    safeReportCount++;
+                    continue;
+                }
+            }
+            else
+            {
+                if (IsSafeNoZip(levels))
+                {
+                    safeReportCount++;
+                    continue;
+                }
             }
 
             var canBeMadeSafe = false;
@@ -54,9 +75,19 @@ public class Day02Puzzle
                 var modifiedLevels = new List<int>(levels);
                 modifiedLevels.RemoveAt(i);
 
-                if (!IsSafe(modifiedLevels.ToArray()))
+                if (useZip)
                 {
-                    continue;
+                    if (!IsSafe([.. modifiedLevels]))
+                    {
+                        continue;
+                    }
+                }
+                else
+                {
+                    if (!IsSafeNoZip([.. modifiedLevels]))
+                    {
+                        continue;
+                    }
                 }
 
                 canBeMadeSafe = true;
@@ -83,4 +114,23 @@ public class Day02Puzzle
 
         return (allIncreasing || allDecreasing) && withinRange;
     }
+
+    private static bool IsSafeNoZip(int[] levels)
+    {
+        var differences = new int[levels.Length - 1];
+
+        for (var i = 0; i < differences.Length; i++)
+        {
+            differences[i] = levels[i + 1] - levels[i];
+        }
+
+        var allIncreasing = differences.All(i => i > 0);
+        var allDecreasing = differences.All(i => i < 0);
+
+        var withinRange = differences.All(d => Math.Abs(d) >= 1 && Math.Abs(d) <= 3);
+
+        return (allIncreasing || allDecreasing) && withinRange;
+    }
+
+
 }

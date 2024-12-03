@@ -14,4 +14,11 @@ public class Day02Benchmarks
 
     [Benchmark]
     public int PartTwo() => Day02Puzzle.GetSafeReportsCountPartTwo(_dataFilePath);
+
+    [Benchmark]
+    public int PartOneNoZip() => Day02Puzzle.GetSafeReportsCountPartOne(_dataFilePath, false);
+
+
+    [Benchmark]
+    public int PartTwoNoZip() => Day02Puzzle.GetSafeReportsCountPartTwo(_dataFilePath, false);
 }

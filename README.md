@@ -35,3 +35,7 @@ The above command will run only the Day01 benchmarks.
 This is a sorting problem and so there are multiple ways you can tackle this puzzle. I thought of what is arguably the simplest solution - read the entire file into memory and sort the two lists of integers using LINQ.
 
 I then thought about ways of sorting by reading one line at a time. This sounds better if the file was too large to fit into memory (not the case for this puzzle, but still interesting to think about). I used two priority queues to sort the numbers as they are read.
+
+## Day 2
+
+I used LINQ methods to do the checks. When profiling the part one solution, the `Zip()` operation was particularly expensive so I created versions that did not use LINQ for comparison.
