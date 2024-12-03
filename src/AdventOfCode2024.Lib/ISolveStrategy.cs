@@ -1,9 +1,6 @@
 namespace AdventOfCode2024.Lib;
 
-public partial class Day01Puzzle
+public interface ISolveStrategy
 {
-    public interface ISolveStrategy
-    {
-        int Solve(string dataFilePath);
-    }
+    int Solve(string dataFilePath);
 }
