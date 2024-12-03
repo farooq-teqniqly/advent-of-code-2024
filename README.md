@@ -38,4 +38,4 @@ I then thought about ways of sorting by reading one line at a time. This sounds 
 
 ## Day 2
 
-I used LINQ methods to do the checks. When profiling the part one solution, the `Zip()` operation was particularly expensive so I created versions that did not use LINQ for comparison.
+The choice here is wether to use LINQ or not. It is interesting to compare the performance characteristics of both approaches.

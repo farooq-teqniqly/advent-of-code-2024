@@ -25,21 +25,21 @@ Priority queue was slower than using LINQ but that could be due to the overhead 
 
 ## Day 2 Benchmark Results
 
-| Method       |     Mean |    Error |   StdDev |     Gen0 |   Gen1 |  Allocated |
-| ------------ | -------: | -------: | -------: | -------: | -----: | ---------: |
-| PartOne      | 564.9 us | 10.31 us | 14.78 us | 136.7188 | 3.9063 |  838.02 KB |
-| PartTwo      | 977.1 us | 19.16 us | 26.86 us | 320.3125 | 7.8125 | 1981.93 KB |
-| PartOneNoZip | 434.0 us | 10.45 us | 29.48 us |  94.2383 | 2.4414 |  578.73 KB |
-| PartTwoNoZip | 668.9 us | 13.04 us | 21.05 us | 190.4297 | 4.8828 | 1166.59 KB |
+| Method             |     Mean |    Error |   StdDev |     Gen0 |   Gen1 |  Allocated |
+| ------------------ | -------: | -------: | -------: | -------: | -----: | ---------: |
+| PartOneWithLinq    | 525.4 us | 10.34 us | 15.79 us | 136.7188 | 3.9063 |  838.02 KB |
+| PartTwoWithLinq    | 869.0 us | 17.29 us | 16.98 us | 323.2422 | 9.7656 | 1981.93 KB |
+| PartOneWithoutLinq | 268.0 us |  5.30 us | 11.85 us |  71.2891 | 1.9531 |  438.38 KB |
+| PartTwoWithoutLinq | 385.0 us |  6.96 us |  5.81 us | 118.1641 | 3.4180 |  724.17 KB |
 
 ## Conclusion
 
-Using LINQ makes for more readable code at the expense of performance. When running the code under a profiler, the `Zip().ToList()` calls were particularly expensive. I was able to improve runtime and memory usage considerably by creating the differences array without using LINQ. Cotninuing this line of thinking, you would remove LINQ usage entirely if performance was critical.
+Using LINQ makes for more readable code at the expense of performance. The non-LINQ version is much more
+time and space efficient.
 
 ### Time Complexity
 
 -   For part one, the time complexity is $O(r*l)$ where $r$ is the number of reports and $l$ is the number of levels.
-
 -   For part two, the removal of each level and re-check takes $O(r * l^2)$ time where $r$ is the number of reports and $l$ is the number of levels.
 
 ### Space Complexity

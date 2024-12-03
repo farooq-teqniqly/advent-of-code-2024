@@ -14,4 +14,10 @@ public class Day02Benchmarks
 
     [Benchmark]
     public int PartTwoWithLinq() => new Day02Puzzle.PartTwoLinqSolveStrategy().Solve(_dataFilePath);
+
+    [Benchmark]
+    public int PartOneWithoutLinq() => new Day02Puzzle.PartOneNoLinqSolveStrategy().Solve(_dataFilePath);
+
+    [Benchmark]
+    public int PartTwoWithoutLinq() => new Day02Puzzle.PartTwoNoLinqSolveStrategy().Solve(_dataFilePath);
 }
