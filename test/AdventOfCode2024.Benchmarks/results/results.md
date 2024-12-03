@@ -45,3 +45,24 @@ time and space efficient.
 ### Space Complexity
 
 -   $O(l)$ where $l$ is the number of levels for the differences list and a copy of the modified levels.
+
+## Day 3 Benchmark Results
+
+| Method                    |       Mean |    Error |   StdDev |    Gen0 |    Gen1 |    Gen2 | Allocated |
+| ------------------------- | ---------: | -------: | -------: | ------: | ------: | ------: | --------: |
+| PartOneWithRegex          | 1,802.7 us | 34.97 us | 41.63 us | 74.2188 | 33.2031 | 15.6250 | 462.84 KB |
+| PartOneWithGeneratedRegex |   281.3 us |  5.89 us | 17.27 us | 73.2422 | 15.1367 |  0.4883 | 449.41 KB |
+| PartTwoWithRegex          | 2,268.9 us | 44.07 us | 63.20 us | 78.1250 | 11.7188 |  3.9063 | 479.91 KB |
+| PartTwoWithGeneratedRegex |   247.9 us |  4.90 us | 11.35 us | 73.2422 | 15.1367 |  0.4883 | 449.41 KB |
+
+### Conclusion
+
+~6x to 9x execution time improvement by using [Regular Expression Source Generators](https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-source-generators)! Listen to Microsoft and don't use `new Regex()` anymore!
+
+### Time Complexity
+
+-   The time complexity is $O(l+m)$ where $l$ is the length of the line and $m$ is the number of matches to process.
+
+### Space Complexity
+
+-   The space complexity is $O(m)$ where $m$ is the number of matches to process.

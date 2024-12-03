@@ -39,3 +39,13 @@ I then thought about ways of sorting by reading one line at a time. This sounds 
 ## Day 2
 
 The choice here is wether to use LINQ or not. It is interesting to compare the performance characteristics of both approaches.
+
+## Day 3
+
+This is a straightforward regex problem. When working with regexes, Visual Studio might give you the following hint:
+
+```
+SYSLIB1045	Use 'GeneratedRegexAttribute' to generate the regular expression implementation at compile-time.
+```
+
+Hence there are two approaches to compare for benchmarking purposes, using `new Regex()` and using the [Regex Source Generators](https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-source-generators) per the above hint. The execution time improvement with Regex Source Generators is staggering!
